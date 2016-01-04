@@ -59,10 +59,11 @@ class SampleLogging(object):
     def get_imphash(self, data):
         try:
             pe = pefile.PE(data = data)
+            imphash = pe.get_imphash()
         except:
             return None
 
-        return pe.get_imphash()
+        return imphash
 
     def is_pdf(self, data):
         return (data[:1024].find('%PDF') != -1)
